@@ -12,15 +12,15 @@ public:
    string Company;
    int age;
 
+   Employee(string name, string company, int _age) {
+    Name = name;
+    Company = company;
+    age = _age;     
+    }
    void IntroduceYourself(){
     std::cout << "Hello I am " << Name << endl; 
     std::cout << "I work for company called " << Company << endl; 
     std::cout << "And I am " << age << endl; 
-    }   
-   Employee(string Name, string Company, int age) {
-    Name = Name;
-    Company = Company;
-    age = age;     
     }
 
 }; 
