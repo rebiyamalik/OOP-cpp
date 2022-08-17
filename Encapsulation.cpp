@@ -20,6 +20,7 @@ public:
         return Company;
     }
     void setAge(int age){
+        if (age >= 18)
         Age = age;
     }
     int getAge(){
@@ -38,13 +39,13 @@ public:
 }; 
 int main()
 {
-    Employee employee1 = Employee("Tehreem", "My own self", 15);
+    Employee employee1 = Employee("Tehreem", "\'My own self\'", 78);
     employee1.IntroduceYourself();
 
     Employee employee2 = Employee ("Mahreen", "Everva", 20);
     employee2.IntroduceYourself();
 
-    employee1.setAge(67);
+    employee1.setAge(15);
     employee1.setName("Tehreem");
     cout << employee1.getName() << " is " << employee1.getAge() << " years old" << endl;
     
