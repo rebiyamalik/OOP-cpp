@@ -43,21 +43,30 @@ public:
         Age = age;
     }
     void AskForPromotion() {
-        if(Age >=30)
+        if(Age > 30)
             cout << Name << " got promoted!" << endl;
         else
             cout << Name << ", sorry NO promotion for you" << endl;
-        
-
     }
-}; 
+};
+// Employee is the Parent class
+// Developer is the child class 
+class Developer: Employee {
+public:
+    string FavProgrammingLanguage;
+    Developer(string name, string company, int age, string favprogramminglanguage)
+        :Employee(name, company, age)   
+            {
+                FavProgrammingLanguage = favprogramminglanguage;
+            }    
+        };
+    void FixBug()
+{
+    cout << getName() << " fixed bug using" << FavProgramminglanguage << endl;
+};  
 int main()
 {
-    Employee employee1 = Employee("Tehreem", "\'My own self\'", 78);
-    Employee employee2 = Employee ("Mahreen", "Everva", 20);
-    
-    employee1.AskForPromotion();
-    employee2.AskForPromotion();
-    
+    Developer d = Developer("Tehreem", "\'My own company\'", 78, "C++");
+    d.FixBug();
     
 }
