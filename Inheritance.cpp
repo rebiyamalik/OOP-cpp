@@ -7,9 +7,10 @@ class AbstractEmployee{
 };
 class Employee:AbstractEmployee {
 private: 
-   string Name;
    string Company;
    int Age;
+protected: 
+    string Name;
 public:
     void setName(string name){
         Name = name;
@@ -49,7 +50,7 @@ public:
 };
 // Employee is the Parent class
 // Developer is the child class 
-class Developer: Employee {      
+class Developer:public Employee {      
 public:
     string FavProgrammingLanguage;
     Developer(string name, string company, int age, string favprogramminglanguage) 
@@ -58,14 +59,27 @@ public:
                 FavProgrammingLanguage = favprogramminglanguage;
             }    
     void FixBug(){
-    cout << getName() << " fixed a bug using " << FavProgrammingLanguage << endl;       
+    cout << Name << " fixed a bug using " << FavProgrammingLanguage << endl;       
     }
 };
 
-    
+class Teacher:public Employee {
+public: 
+    string Subject;
+    void PrepareLesson(){
+        cout << Name << " is preparing " << Subject << " lesson" << endl;
+    }
+    Teacher(string name, string company, int age, string subject)
+        :Employee(name, company, age)
+    {
+        Subject = subject;
+    }
+
+};
 int main()
 {
     Developer d = Developer("Tehreem", "\'My own company\'", 78, "C++");
-    d.FixBug();
-    
+    Teacher t = Teacher("Jack", "App&Snap", 65, "History");
+    t.PrepareLesson();
+    t.AskForPromotion();
 }
