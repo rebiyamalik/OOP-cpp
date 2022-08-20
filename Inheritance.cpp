@@ -5,8 +5,6 @@ class AbstractEmployee{
      virtual void AskForPromotion()=0;
 
 };
-
-
 class Employee:AbstractEmployee {
 private: 
    string Name;
@@ -51,19 +49,20 @@ public:
 };
 // Employee is the Parent class
 // Developer is the child class 
-class Developer: Employee {
+class Developer: Employee {      
 public:
     string FavProgrammingLanguage;
-    Developer(string name, string company, int age, string favprogramminglanguage)
+    Developer(string name, string company, int age, string favprogramminglanguage) 
         :Employee(name, company, age)   
             {
                 FavProgrammingLanguage = favprogramminglanguage;
             }    
-        };
-    void FixBug()
-{
-    cout << getName() << " fixed bug using" << FavProgramminglanguage << endl;
-};  
+    void FixBug(){
+    cout << getName() << " fixed a bug using " << FavProgrammingLanguage << endl;       
+    }
+};
+
+    
 int main()
 {
     Developer d = Developer("Tehreem", "\'My own company\'", 78, "C++");
