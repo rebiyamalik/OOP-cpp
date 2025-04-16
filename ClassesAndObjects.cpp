@@ -1,38 +1,55 @@
 #include <iostream>
 using namespace std;
 
-// there are 3 access modifiers:
-// 1) Private
-// 2) Protected
-// 3) Public 
-
+// Base class
 class Employee {
-public: 
-   string Name;
-   string Company;
-   int age;
+private:
+    string name;
+    string company;
+    int age;
 
-   void IntroduceYourself(){
-    cout << "Hello I am " << Name << endl; 
-    cout << "I work for company called " << Company << endl; 
-    cout << "And I am " << age << endl; 
+public:
+    // Constructor
+    Employee(string n, string c, int a) {
+        name = n;
+        company = c;
+        setAge(a);  // Use setter to apply validation
+    }
 
-   } 
-}; 
+    // Setters
+    void setName(string n) { name = n; }
+    void setCompany(string c) { company = c; }
+    void setAge(int a) {
+        if (a >= 16 && a <= 100)
+            age = a;
+        else
+            cout << "Invalid age. Must be between 16 and 100.\n";
+    }
 
-int main()
-{
-    Employee employee1;
-    employee1.Name = "Tehreem";
-    employee1.Company = "My Own Company";
-    employee1.age = 16;
-    employee1.IntroduceYourself();
+    // Getters
+    string getName() const { return name; }
+    string getCompany() const { return company; }
+    int getAge() const { return age; }
 
-    Employee employee2;
-    employee2.Name = "Mahreen";
-    employee2.Company = "Everva";
-    employee2.age = 20;
-    employee2.IntroduceYourself();
+    // Method
+    void introduceYourself() const {
+        cout << "Hello, I am " << name << endl;
+        cout << "I work for a company called " << company << endl;
+        cout << "And I am " << age << " years old\n" << endl;
+    }
+};
 
+int main() {
+    // Creating objects with constructor
+    Employee employee1("Tehreem", "My Own Company", 16);
+    Employee employee2("Mahreen", "Everva", 20);
 
+    employee1.introduceYourself();
+    employee2.introduceYourself();
+
+    // Optional: Use setters to modify
+    employee1.setAge(18);
+    employee1.introduceYourself();
+
+    return 0;
 }
